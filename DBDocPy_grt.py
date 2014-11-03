@@ -19,10 +19,12 @@
 
 # An utility to generate data dictionaries (DBDoc)
 
-# Install it through Scripting/Install Plugin/Module
-# select DBDocPy_grt.py file, restart MWB to take effect
+# Install it through Scripting/Install Plugin/Module menu
+# select DBDocPy_grt.py file, restart MWB for the change to take effect.
 
-# It can be accessed through Tools/Catalog menu
+# It can be accessed through Tools/Catalog menu, there are 2 options:
+# A text version, displayed at MWB console
+# An HTML version, exported to a file
 
 # Notes: I've never programmed in Python before, take it in mind and please be kind.
 # Any suggestions are welcome. You can leave your contribution, or check, for updates at:
@@ -80,7 +82,7 @@ def htmlDataDictionary(catalog):
 </head>
 <body>"""
   for table in schema.tables:
-    print >>htmlFile, "<table><caption>Table: %s</caption>" % (table.name)
+    print >>htmlFile, "<table><caption>Table: %s - %s</caption>" % (table.name, table.comment)
     print >>htmlFile, """<tr><td colspan=\"7\">Attributes</td></tr>
 <tr>
 <th>Name</th>
@@ -108,7 +110,7 @@ def consoleDataDictionary(catalog):
   schema = catalog.schemata[0]
   print "Schema: %s" % (schema.name)
   for table in schema.tables:
-    print "\tTable: %s" % (table.name)
+    print "\tTable: %s - %s" % (table.name, table.comment)
     for column in table.columns:
       pk = ('No', 'Yes')[bool(table.isPrimaryKeyColumn(column))]
       fk = ('No', 'Yes')[bool(table.isForeignKeyColumn(column))]
