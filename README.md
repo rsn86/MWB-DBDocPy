@@ -14,3 +14,6 @@ An HTML version, exported to a file
 
 I've never programmed in Python before, take it in mind and please be kind.
 Any suggestions are welcome. Please leave your contribution.
+
+**This plugin doesn't work with version 6.x.
+You may take a look at http://tmsanchezdev.blogspot.com.br/2015/03/html-report-from-mysqlworkbench-6x.html for a plugin compatible with version 6.x.**
